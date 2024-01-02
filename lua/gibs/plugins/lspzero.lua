@@ -7,23 +7,33 @@ return {
         "L3MON4D3/LuaSnip",
     },
     config = function()
-        local lsp_zero = require('lsp-zero')
+        local lsp_zero = require("lsp-zero")
 
         lsp_zero.on_attach(function(client, bufnr)
             -- see :help lsp-zero-keybindings
             -- to learn the available actions
-            local opts = {buffer = bufnr, remap = false}
-
-            vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-
-            -- lsp_zero.default_keymaps({buffer = bufnr})
+            lsp_zero.default_keymaps({buffer = bufnr})
         end)
 
-        require('mason').setup({})
-        require('mason-lspconfig').setup({
+        require("mason").setup({})
+        require("mason-lspconfig").setup({
             handlers = {
                 lsp_zero.default_setup,
             },
         })
+
+        -- https://github.com/neovim/nvim-lspconfig/issues/2660
+        local lspconfig = require("lspconfig")
+        lspconfig.pylsp.setup {
+            settings = {
+                pylsp = {
+                    plugins = {
+                        flake8 = { enabled = true },
+                        pycodestyle = { enabled = false },
+                        mccabe = { enabled = false }
+                    }
+                }
+            }
+        }
     end,
 }
