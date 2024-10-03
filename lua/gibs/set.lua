@@ -14,3 +14,5 @@ vim.opt.incsearch = true
 vim.opt.wrap = false
 vim.opt.termguicolors = true
 vim.opt.hidden = true
+vim.opt.list = true
+vim.opt.listchars = "tab:|·,trail:·"
