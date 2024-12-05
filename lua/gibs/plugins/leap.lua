@@ -7,7 +7,7 @@ return {
         leap.opts.special_keys = {
             next_target = '<enter>',
             prev_target = { '<backspace>', '<tab>' },
-            next_group = ';',
+            next_group = '<space>',
             prev_group = { '<backspace>', '<tab>' },
         }
         vim.keymap.set({'n', 'x', 'o'}, 's',  '<Plug>(leap-forward)')
