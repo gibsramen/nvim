@@ -16,8 +16,8 @@ return {
             layout = {
                 max_width = { 30, 0.2 },
                 min_width = { 30, 0.2 },
-                default_direction = "prefer_left",
-                placement = "edge",
+                default_direction = "left",
+                placement = "window",
             },
         })
     end,

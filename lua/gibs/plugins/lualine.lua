@@ -10,6 +10,9 @@ return {
             options = {
                 icons_enabled = true,
                 theme = "auto"
+            },
+            sections = {
+                lualine_x = {"filetype"}
             }
         }
     end,

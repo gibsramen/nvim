@@ -24,14 +24,25 @@ return {
 
         -- https://github.com/neovim/nvim-lspconfig/issues/2660
         local lspconfig = require("lspconfig")
-        lspconfig.pylsp.setup {
+        -- lspconfig.pylsp.setup {
+        --     settings = {
+        --         pylsp = {
+        --             plugins = {
+        --                 flake8 = { enabled = false },
+        --                 pycodestyle = { enabled = false },
+        --                 mccabe = { enabled = false },
+        --                 pylint = { enabled = false },
+        --                 autopep8 = { enabled = false },
+        --                 pyflakes = { enabled = false },
+        --                 yapf = { enabled = false },
+        --             }
+        --         }
+        --     }
+        -- }
+        lspconfig.pyright.setup {
             settings = {
-                pylsp = {
-                    plugins = {
-                        flake8 = { enabled = true },
-                        pycodestyle = { enabled = false },
-                        mccabe = { enabled = false }
-                    }
+                pyright = {
+                    reportUnusedImport = false
                 }
             }
         }
