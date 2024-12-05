@@ -1,3 +1,5 @@
+-- Used so spacebar doesn't have a delay before advancing
+vim.keymap.set("n", "<Space>", "<Nop>", { silent = true, remap = false })
 vim.g.mapleader = " "
 
 vim.keymap.set("n", "<C-j>", "<C-W>j")
@@ -12,3 +14,5 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 
 -- Used to exit floating windows that are jumped into
 vim.keymap.set("n", "<C-q>", ":close<CR>")
+
+vim.keymap.set("n", "<leader>d", ":bp|bd #<CR>")
