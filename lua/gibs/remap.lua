@@ -2,6 +2,9 @@
 vim.keymap.set("n", "<Space>", "<Nop>", { silent = true, remap = false })
 vim.g.mapleader = " "
 
+vim.keymap.set("n", "<leader>n", ":cnext<CR>")
+vim.keymap.set("n", "<leader>p", ":cprev<CR>")
+
 vim.keymap.set("n", "<C-j>", "<C-W>j")
 vim.keymap.set("n", "<C-k>", "<C-W>k")
 vim.keymap.set("n", "<C-l>", "<C-W>l")
