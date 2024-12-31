@@ -6,6 +6,10 @@ return {
         "L3MON4D3/LuaSnip",
     },
     config = function()
+        -- Reserve a space in the gutter
+        -- This will avoid an annoying layout shift in the screen
+        vim.opt.signcolumn = 'yes'
+
         local lspconfig_defaults = require('lspconfig').util.default_config
         lspconfig_defaults.capabilities = vim.tbl_deep_extend(
             'force',
