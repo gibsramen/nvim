@@ -19,3 +19,18 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 vim.keymap.set("n", "<C-q>", ":close<CR>")
 
 vim.keymap.set("n", "<leader>d", ":bp|bd #<CR>")
+
+-- NVIM 0.10 added these default mappings for traversing diagnostics
+-- but they default to non-floating windows.
+vim.keymap.set('n', ']d', function()
+    vim.diagnostic.goto_next({ float = true })
+    end, {
+        desc = 'Jump to the next diagnostic with the highest severity',
+    }
+)
+vim.keymap.set('n', '[d', function()
+    vim.diagnostic.goto_prev({ float = false })
+    end, {
+        desc = 'Jump to the previous diagnostic with the highest severity',
+    }
+)
