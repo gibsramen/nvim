@@ -61,6 +61,8 @@ return {
             },
             mapping = cmp.mapping.preset.insert({}),
         })
+
+        vim.diagnostic.config({ float = { border = "rounded" } })
     end,
 }
 

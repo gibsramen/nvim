@@ -20,8 +20,6 @@ vim.keymap.set("n", "<C-q>", ":close<CR>")
 
 vim.keymap.set("n", "<leader>d", ":bp|bd #<CR>")
 
-vim.diagnostic.config({ float = { border = "rounded" } })
-
 -- NVIM 0.10 added these default mappings for traversing diagnostics
 -- but they default to not showing the floating window.
 vim.keymap.set('n', ']d', function()
