@@ -6,6 +6,7 @@ return {
             colors = {
                 palette = {
                     sumiInk3 = "#0f1e27",
+                    fujiWhite = "#dbd7bc",
                 },
             },
         })
