@@ -1,3 +1,4 @@
+-- Much of this taken from https://lsp-zero.netlify.app/docs/getting-started.html
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -34,17 +35,7 @@ return {
             end,
         })
 
-        local lspconfig = require("lspconfig")
-        lspconfig.pyright.setup {
-            settings = {
-                pyright = {
-                    reportUnusedImport = false
-                }
-            }
-        }
-
         local cmp = require('cmp')
-
         cmp.setup({
             sources = {
                 {name = 'nvim_lsp'},
@@ -70,6 +61,39 @@ return {
             vim.lsp.handlers.signature_help,
             {border = 'rounded'}
         )
+
+        -- Default server handler
+        require('mason-lspconfig').setup({
+            handlers = {
+                function(server_name)
+                    require('lspconfig')[server_name].setup({})
+                end,
+            }
+        })
+
+        ------------------------------------------------------
+        -- SERVER SPECIFIC CONFIGS
+        ------------------------------------------------------
+        local lspconfig = require("lspconfig")
+        lspconfig.pyright.setup({
+            -- Used to ignore pyright hints (e.g. import not accessed)
+            -- https://github.com/microsoft/pyright/discussions/5852
+            capabilities = {
+                textDocument = {
+                    publishDiagnostics = {
+                        tagSupport = {
+                            valueSet = { 2 },
+                        },
+                    },
+                },
+            },
+            settings = {
+                -- Use pyright for type info, ruff for everything else
+                disableLanguageServices = true,
+            }
+        })
+        lspconfig.ruff.setup({})
+        ------------------------------------------------------
     end,
 }
 
