@@ -50,20 +50,24 @@ return {
             mapping = cmp.mapping.preset.insert({}),
         })
 
-        -- Apparently no way to easily set the border for all floating windows
-        -- https://vonheikemen.github.io/devlog/tools/neovim-lsp-client-guide/
-        vim.diagnostic.config({
-            float = { border = "rounded" },
-            virtual_text = true
-        })
-        vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-            vim.lsp.handlers.hover,
-            {border = 'rounded'}
-        )
-        vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-            vim.lsp.handlers.signature_help,
-            {border = 'rounded'}
-        )
+        vim.diagnostic.config({ virtual_text = true })
+
+        local version = vim.version()
+        if version.major > 0 or (version.major == 0 and version.minor >= 11) then
+            vim.o.winborder = "rounded"
+        else
+            -- Apparently no way to easily set the border for all floating windows
+            -- https://vonheikemen.github.io/devlog/tools/neovim-lsp-client-guide/
+            vim.diagnostic.config({ float = { border = "rounded" } })
+            vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+                vim.lsp.handlers.hover,
+                {border = 'rounded'}
+            )
+            vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+                vim.lsp.handlers.signature_help,
+                {border = 'rounded'}
+            )
+        end
 
         -- Default server handler
         require('mason-lspconfig').setup({
