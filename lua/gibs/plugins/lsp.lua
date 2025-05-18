@@ -52,7 +52,10 @@ return {
 
         -- Apparently no way to easily set the border for all floating windows
         -- https://vonheikemen.github.io/devlog/tools/neovim-lsp-client-guide/
-        vim.diagnostic.config({ float = { border = "rounded" } })
+        vim.diagnostic.config({
+            float = { border = "rounded" },
+            virtual_text = true
+        })
         vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
             vim.lsp.handlers.hover,
             {border = 'rounded'}
