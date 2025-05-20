@@ -100,6 +100,12 @@ return {
             }
         })
         lspconfig.ruff.setup({})
+        -- https://github.com/neovim/neovim/issues/21686#issuecomment-1522446128
+        lspconfig.lua_ls.setup({
+            settings = {
+                Lua = { diagnostics = { globals = { 'vim' } } }
+            }
+        })
         ------------------------------------------------------
     end,
 }
