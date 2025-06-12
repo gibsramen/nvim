@@ -18,7 +18,7 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 -- Used to exit floating windows that are jumped into
 vim.keymap.set("n", "<C-q>", ":close<CR>")
 
-vim.keymap.set("n", "<leader>d", ":bp|bd #<CR>")
+-- vim.keymap.set("n", "<leader>d", ":bp|bd #<CR>")
 
 -- NVIM 0.10 added these default mappings for traversing diagnostics
 -- but they default to not showing the floating window.
