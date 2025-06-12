@@ -48,6 +48,10 @@ return {
                 end,
             },
             mapping = cmp.mapping.preset.insert({}),
+            window = {
+                completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered(),
+            },
         })
 
         vim.diagnostic.config({ virtual_text = true })
