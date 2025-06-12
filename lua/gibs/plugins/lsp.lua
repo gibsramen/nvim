@@ -75,9 +75,23 @@ return {
 
         -- Default server handler
         require('mason-lspconfig').setup({
+            -- Exclude these so we can add settings manually
+            automatic_enable = {
+                exclude = {
+                    "pyright",
+                    "lua_ls"
+                }
+            },
+            ensure_installed = {
+                "lua_ls",
+                "pyright",
+                "ruff",
+                "gopls",
+                "bashls",
+            },
             handlers = {
                 function(server_name)
-                    require('lspconfig')[server_name].setup({})
+                    require("lspconfig")[server_name].setup({})
                 end,
             }
         })
@@ -103,7 +117,6 @@ return {
                 disableLanguageServices = true,
             }
         })
-        lspconfig.ruff.setup({})
         -- https://github.com/neovim/neovim/issues/21686#issuecomment-1522446128
         lspconfig.lua_ls.setup({
             settings = {
